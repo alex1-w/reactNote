@@ -10,8 +10,8 @@ import { actions } from '../../store/notes/notes';
 import { useOnClickOutside } from '../../hooks/useClickOutside';
 import { trashActions, trashSlice } from '../../store/trash/trash';
 import { formateDate } from '../../helpers/formateDate';
-import { TagBlock } from './TagBlock/TagBlock';
 import { useSelector } from 'react-redux';
+import { TagBlock } from './components/TagBlock/TagBlock';
 
 const Note: FC<{ note: INote }> = ({ note }) => {
     const { color, id, text, title, tags } = note
@@ -87,7 +87,6 @@ const Note: FC<{ note: INote }> = ({ note }) => {
                 </div>
 
                 <TagBlock tags={tags} />
-
             </div>
         </div >
     )
