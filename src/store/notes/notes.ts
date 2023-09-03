@@ -48,7 +48,7 @@ const initialState: INote[] = [
         color: "yellow",
         id: 6,
         createdAt: '2022-11-20',
-        tags: [{ name: 'учеба' }, { name: 'JOB' }]
+        tags: [{ name: 'учеба' }, { name: 'продукты' },{ name: 'салон' }, { name: 'JOB' }]
     },
 
 ]
@@ -68,8 +68,7 @@ export const notesSlice = createSlice({
             state = state.filter(n => n.id !== id)
             return state
         },
-        // changeColor: (state, { payload: note }) => {
-        // }
+
     },
 })
 

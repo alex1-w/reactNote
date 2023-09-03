@@ -22,7 +22,7 @@ const Trash: FC = () => {
 
                 <div>
                     {trash.map((note: INote) => (
-                        <TrashNote note={note} />
+                        <TrashNote note={note} key={note.id} />
                     ))}
                 </div>
 

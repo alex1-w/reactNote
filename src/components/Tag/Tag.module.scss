@@ -1,22 +1,31 @@
 .main {
-    padding: 1px;
-    width: 110px;
+    position: relative;
+    cursor: pointer;
     display: flex;
     align-items: center;
+    padding: 1px;
+    width: fit-content;
+    max-width: 90px;
+    padding: 2px 7px;
     gap: 3px;
     border-radius: 5px;
-    border: 1.9px solid rgba(0, 0, 0, 0.612);
-    position: relative;
-
+    background-color: rgb(219, 236, 93);
+    border: 1.6px solid rgba(0, 0, 0, 0.612);
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.521);
     border-top-right-radius: 200px;
     border-bottom-right-radius: 200px;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
 
     p {
-        max-width: 70%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        font-size: 14px;
+        max-width: 80%;
+        // overflow: hidden;
+        // white-space: nowrap;
+        // text-overflow: ellipsis;
+    }
+
+    svg {
+        height: 0.8em;
     }
 }

@@ -1,0 +1,32 @@
+.main {
+    display: flex;
+    align-items: center;
+    // gap: 6px;
+
+    button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.tagWrapper {
+    background-color: rgb(219, 236, 93);
+    padding: 1px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    // gap: 3px;
+    border-radius: 5px;
+    border: 1.9px solid rgba(0, 0, 0, 0.612);
+    position: relative;
+
+    border-top-right-radius: 200px;
+    border-bottom-right-radius: 200px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+
+    input {
+        width: 70%;
+        border-bottom: 1.2px solid black;
+    }
+}
