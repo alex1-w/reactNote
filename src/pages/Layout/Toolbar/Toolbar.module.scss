@@ -1,0 +1,32 @@
+.main {
+    position: absolute;
+    left: 0;
+    top: calc(100vh - 70%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px 30px 50px 10px;
+    border-top-right-radius: 80%;
+    border-bottom-right-radius: 80%;
+    width: fit-content;
+    background-color: #42AAFF;
+    /* border-right: 3px solid rgba(0, 0, 0, 0.523); */
+
+    a {
+        svg {
+            transition: 0.2s scale;
+
+            &:hover {
+                transition: 0.2s scale;
+                scale: 1.1;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 430px) {
+
+    .main {
+        top:0
+    }
+}

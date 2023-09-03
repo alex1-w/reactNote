@@ -1,0 +1,28 @@
+.main {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.598);
+    transition: box-shadow 0.3s;
+
+    &:hover {
+        transition: box-shadow 0.3s;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.598);
+    }
+}
+
+.blue {
+    background-color: rgb(0, 0, 197);
+}
+
+.dark {
+    background-color: rgb(0, 0, 0);
+}
+
+.yellow {
+    background-color: rgb(204, 255, 0);
+}
+
+.green {
+    background-color: rgb(24, 239, 0);
+}

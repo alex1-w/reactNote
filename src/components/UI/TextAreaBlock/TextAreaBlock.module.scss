@@ -1,0 +1,20 @@
+.main {
+    position: relative;
+}
+
+error {
+    position: absolute;
+    top: 40%;
+    right: 106%;
+
+    p {
+        font-size: 15px;
+        font-weight: 700;
+        color: rgb(219, 0, 0);
+    }
+}
+
+.tagsBlock {
+
+    // height: 20px;
+}

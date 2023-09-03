@@ -1,0 +1,10 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    >div:first-child {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

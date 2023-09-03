@@ -1,0 +1,27 @@
+.main {
+  display: flex;
+  // flex-direction: column;
+  position: relative;
+}
+
+.inp {
+  background-color: inherit;
+  width: 100%;
+
+  label {
+    color: #a4adb1 !important;
+    font-weight: 500;
+    background-color: #546874;
+    padding: 4px;
+    border-radius: 5px;
+  }
+}
+
+.error {
+  position: absolute;
+  top: -20%;
+  right: 110%;
+  color: rgb(220, 0, 0);
+  font-weight: 700;
+  font-size: 15px;
+}
