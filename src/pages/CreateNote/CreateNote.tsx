@@ -58,7 +58,7 @@ const CreateNote = () => {
                 >
 
                     <div className={styles.createNoteWrapper}>
-                        <div className={styles.note}>
+                        <div className={styles.createNoteWrapper__note}>
 
                             <div>
                                 <div>

@@ -10,12 +10,15 @@ import { actions } from '../../store/notes/notes';
 import { useOnClickOutside } from '../../hooks/useClickOutside';
 import { trashActions, trashSlice } from '../../store/trash/trash';
 import { formateDate } from '../../helpers/formateDate';
+import { TagBlock } from './TagBlock/TagBlock';
+import { useSelector } from 'react-redux';
 
 const Note: FC<{ note: INote }> = ({ note }) => {
-    const { color, id, text, title } = note
+    const { color, id, text, title, tags } = note
     const [isDeleteBtn, setIsDeleteBtn] = useState(false)
-    const deleteBtnRef = useRef<HTMLButtonElement>(null)
+    const deleteBtnRef = useRef<HTMLDivElement>(null)
 
+    console.log(tags);
 
     useOnClickOutside(deleteBtnRef, () => setIsDeleteBtn(false))
     const showDeleteBtn = () => setIsDeleteBtn(!isDeleteBtn)
@@ -26,9 +29,6 @@ const Note: FC<{ note: INote }> = ({ note }) => {
         dispatch(trashActions.addToTrash(note))
         dispatch(actions.deleteNote(id))
     }
-
-    // console.log(note.createdAt);
-    
 
     return (
         <div className={cn(styles.main,
@@ -50,41 +50,44 @@ const Note: FC<{ note: INote }> = ({ note }) => {
 
             </div>
 
-            <div className={cn(styles.textBlock, {
-                [styles.darkText]: color === 'dark',
-            })}>
+            <div className={cn(styles.textBlock, { [styles.darkText]: color === 'dark', })}>
                 <p>{text}</p>
             </div>
 
             <div className={styles.footer}>
+                <div className={styles.footer__interface}>
 
-                <Link to={`/edit/${id}`}>
-                    {editIcon}
-                </Link>
+                    <Link to={`/edit/${id}`}>
+                        {editIcon}
+                    </Link>
 
-                <div
-                    className={styles.footer__deleteBlock}
-                    onClick={showDeleteBtn}
-                >
+                    <div className={styles.footer__interface__deleteBlock} onClick={showDeleteBtn}>
 
-                    {minusIcon}
+                        {minusIcon}
 
-                    <AnimatePresence>
-                        {isDeleteBtn
-                            &&
-                            <motion.button
-                                type="submit"
-                                initial={{ width: 0 }}
-                                animate={{ width: 150 }}
-                                exit={{ width: 0 }} onClick={deleteNote}
-                                ref={deleteBtnRef}
-                            >
-                                <p>are&#160;you&#160;sure&#160;?</p>
-                            </motion.button>
-                        }
-                    </AnimatePresence>
+                        <AnimatePresence>
+                            {isDeleteBtn
+                                &&
+                                <motion.div
+                                    className={styles.footer__interface__deleteBtn}
+                                    ref={deleteBtnRef}
+                                    initial={{ width: 0, border: 0 }}
+                                    animate={{ width: 150, border: '2.4px solid black' }}
+                                    exit={{ width: 0, border:0 }}
+                                    transition={{ type: 'spring', damping: 40, bounce: 70, stiffness:400 }}
+                                >
+                                    <button type="submit" onClick={deleteNote}>
+                                        <p>are&#160;you&#160;sure&#160;?</p>
+                                    </button>
 
+                                </motion.div>
+                            }
+                        </AnimatePresence>
+                    </div>
                 </div>
+
+                <TagBlock tags={tags} />
+
             </div>
         </div >
     )

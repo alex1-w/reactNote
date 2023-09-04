@@ -2,7 +2,7 @@ import styles from './TagsBlock.module.scss';
 import { ITag } from '../../../types/ITag';
 import { FC, useState } from "react"
 import Tag from '../../../components/Tag/Tag';
-import TagWrapper from '../../../components/TagWrapper/TagWrapper';
+import AddTagBlock from '../../../components/AddTagBlock/AddTagBlock';
 
 interface ITagsBlock {
     tags: ITag[];
@@ -17,17 +17,19 @@ const TagsBlock: FC<ITagsBlock> = ({ setTags, tags }) => {
         <div className={styles.main}>
 
             <div>
-                {tags.map(tag => (
-                    <Tag name={tag.name} key={tag.name} />
-                ))}
+
+                <h3>Теги:</h3>
+
+                <div className={styles.tagsBlock}>
+                    {tags.map(tag => (
+                        <Tag name={tag.name} key={tag.name} />
+                    ))}
+                </div>
+
             </div>
 
-            <div>
-                {
-                    newTag && <TagWrapper setTags={setTags} tags={tags}/>
-                }
-                <button onClick={showNewTag}>добавить тег</button>
-            </div>
+
+            <AddTagBlock setTags={setTags} tags={tags} showNewTag={showNewTag} />
 
         </div>
     )
