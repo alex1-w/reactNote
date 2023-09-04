@@ -1,9 +1,9 @@
 import styles from './TagSwiper.module.scss'
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
 import { ITag } from '../../../../types/ITag';
-import { FC } from 'react'
 import Tag from '../../../Tag/Tag';
+import { FC } from 'react'
 
 
 export const TagSwiper: FC<{ tags: ITag[] }> = ({ tags }) => {
