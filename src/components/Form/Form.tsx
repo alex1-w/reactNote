@@ -1,9 +1,9 @@
-import styles from "./Form.module.scss";
-import { SubmitErrorHandler, SubmitHandler, UseFormHandleSubmit } from "react-hook-form";
-import React, { FC } from "react";
-import { Button } from "@mui/material";
+import styles from './Form.module.scss';
+import { SubmitErrorHandler, SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
+import React, { FC } from 'react';
+import { Button } from '@mui/material';
 
-interface IFormProps {
+export interface IFormProps {
   children: React.ReactNode;
   head?: { title: string; icon: React.ReactNode };
   handleSubmit: UseFormHandleSubmit<any>;
@@ -13,15 +13,17 @@ interface IFormProps {
   submitCount?: number;
 }
 
-export const Form: FC<IFormProps> = ({ children, head, handleSubmit, isValid, submitCount, error, submit, }) => {
-
+export const Form: FC<IFormProps> = ({
+  children,
+  head,
+  handleSubmit,
+  isValid,
+  submitCount,
+  error,
+  submit,
+}) => {
   return (
-    <form
-      noValidate
-      className={styles.main}
-      onSubmit={handleSubmit(submit, error)}
-    >
-
+    <form noValidate className={styles.main} onSubmit={handleSubmit(submit, error)}>
       {head && (
         <div className={styles.title}>
           <h1> {head?.title}</h1>
@@ -32,10 +34,10 @@ export const Form: FC<IFormProps> = ({ children, head, handleSubmit, isValid, su
       {children}
 
       <Button
-        type="submit"
-        variant="outlined"
-        color="inherit"
-        size="large"
+        type='submit'
+        variant='outlined'
+        color='inherit'
+        size='large'
         disabled={submitCount !== 0 && !isValid}
       >
         Сохранить

@@ -66,7 +66,9 @@
     p {
         word-break: break-all;
         text-indent: 20px;
-        text-decoration: underline;
+        // text-decoration: underline;
+        font-weight: 700;
+        // font-size: 15px;
     }
 }
 
@@ -79,30 +81,6 @@
     &__interface {
         display: flex;
         gap: 10px;
-
-        &__deleteBlock {
-            position: relative;
-        }
-
-        &__deleteBtn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #F80000;
-            position: absolute;
-            top: -15%;
-            left: 0;
-            height: 35px;
-            overflow: hidden;
-            z-index: 10;
-            // border: 2.4px solid black;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px black;
-
-            p {
-                color: var(--light);
-            }
-        }
 
         svg {
             height: 1.7em;
@@ -118,40 +96,33 @@
 }
 
 .blue {
-    /* background-color: #42AAFF; */
-    /* background-color:  #003153; */
-    /* background-color:  #0095B6; */
-    /* background-color:   #002F55; */
-    background-color: #1E90FF;
+    background-color: var(--main-blue);
 }
 
 
 .yellow {
-    /* background-color: #FFFF00; */
-    background-color: #FEFE22;
     background-color: #FEFE22;
 }
 
 .green {
-    /* background-color: #A8E4A0; */
-    /* background-color: #47A76A; */
-    /* background-color:  #1CAC78; */
     background-color: #009A63;
-
 }
 
 .dark {
     background-color: #131313;
-}
 
-.darkText {
-    h5 {
-        color: white;
-    }
-}
-
-.darkTitle {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
     p {
         color: white;
     }
+
+    svg {
+        fill: white;
+    }
+
+
 }

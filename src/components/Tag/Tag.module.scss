@@ -5,7 +5,8 @@
     align-items: center;
     padding: 1px;
     width: fit-content;
-    max-width: 90px;
+    max-width: 110px;
+    // overflow: hidden;
     padding: 2px 7px;
     gap: 3px;
     border-radius: 5px;
@@ -18,11 +19,11 @@
     border-bottom-left-radius: 40px;
 
     p {
-        font-size: 14px;
+        font-size: 12px;
         max-width: 80%;
-        // overflow: hidden;
-        // white-space: nowrap;
-        // text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     svg {

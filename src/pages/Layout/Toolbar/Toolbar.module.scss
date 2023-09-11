@@ -1,4 +1,5 @@
 .main {
+    z-index: 15;
     position: absolute;
     left: 0;
     top: calc(100vh - 70%);
@@ -27,6 +28,6 @@
 @media screen and (max-width: 430px) {
 
     .main {
-        top:0
+        top: 0
     }
 }

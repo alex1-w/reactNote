@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.2s background-color;
+
+    &:hover {
+        transition: 0.2s background-color;
+        background-color: rgb(1, 84, 186);
+    }
+}
