@@ -7,16 +7,23 @@ import { FC } from 'react';
 
 export const TagSwiper: FC<{ tags: ITag[] }> = ({ tags }) => {
   return (
-    <Swiper
-      className={styles.main}
-      // spaceBetween={10}
-      slidesPerView={2.6}
-    >
-      {tags.map((tag) => (
-        <SwiperSlide key={tag.name}>
-          <Tag name={tag.name} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+
+    <div className={styles.main}>
+
+      <Swiper
+        className={styles.swiper}
+        spaceBetween={10}
+        slidesPerView={2}
+      >
+        {tags.map((tag) => (
+          <SwiperSlide key={tag.name} className={styles.swiper__item}>
+            <Tag name={tag.name} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+    </div>
+
+
   );
 };
