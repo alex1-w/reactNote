@@ -1,5 +1,17 @@
 .main {
-    // border: 1px solid red;
+    height: 100%;
+
+    >div {
+        max-width: 200px;
+        // max-width: 200px;
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
 }
 
 .tagsBlock {

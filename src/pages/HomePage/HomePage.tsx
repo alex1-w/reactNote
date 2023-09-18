@@ -7,7 +7,7 @@ import { useAppSelector } from '../../store/reduxActions';
 import { INote } from '../../types/Note.interface';
 
 const HomePage: FC = () => {
-  const notes = useAppSelector((state) => state.notes);
+  const notes = useAppSelector((state) => state.notes.notes);
   const trash = useAppSelector((state) => state.trash);
   // console.log(notes, trash);
 

@@ -11,12 +11,8 @@ interface IColor {
 const Color: FC<IColor> = ({ color, setColor }) => {
   return (
     <button
-      className={cn(styles.main, {
-        [styles.blue]: color === 'blue',
-        [styles.dark]: color === 'dark',
-        [styles.green]: color === 'green',
-        [styles.yellow]: color === 'yellow',
-      })}
+      type='button'
+      className={cn(styles.main, styles[color])}
       onClick={() => setColor(color)}
     ></button>
   );

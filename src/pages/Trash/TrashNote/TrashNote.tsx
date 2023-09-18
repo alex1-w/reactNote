@@ -1,28 +1,29 @@
 import { INote } from '../../../types/Note.interface';
 import styles from './TrashNote.module.scss';
 import { FC, useState } from 'react';
-import { motion } from 'framer-motion';
 import { regainIcon } from '../../../icons/svgIcons';
+import { useAppDispatch } from '../../../store/reduxActions';
+import { trashActions } from '../../../store/trash/trash';
+import { actions } from '../../../store/notes/notes';
 
 const TrashNote: FC<{ note: INote }> = ({ note }) => {
   const { createdAt, id, tags, text, title, color } = note;
-  const [isTextShowed, setIsTextShowed] = useState<boolean>(false);
 
-  const showText = () => setIsTextShowed(!isTextShowed);
+  const dispatch = useAppDispatch();
+
+  const recover = () => {
+    dispatch(actions.addToNotes(note))
+    dispatch(trashActions.deleteFromTrash(id));
+  };
 
   return (
-    <div className={styles.main} onClick={showText}>
+    <div className={styles.main}>
       <div className={styles.head}>
         <h5>{title}</h5>
-        {/* {regainIcon} */}
+        <button onClick={recover}> {regainIcon}</button>
       </div>
 
-      <motion.div
-        initial={{ height: '30px' }}
-        animate={isTextShowed ? { height: 'fit-content' } : { height: '30px' }}
-      >
-        <p>{text}</p>
-      </motion.div>
+      <div>{text}</div>
     </div>
   );
 };

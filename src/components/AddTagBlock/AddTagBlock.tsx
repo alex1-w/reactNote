@@ -28,7 +28,9 @@ const AddTagBlock: FC<AddTagBlock> = ({ setTags, tags, showNewTag }) => {
         <input type='text' maxLength={10} value={value} onChange={changeHandler} />
       </div>
 
-      <button onClick={() => addInTags(value)}>{plusIcon}</button>
+      <button onClick={() => addInTags(value)} type='button'>
+        {plusIcon}
+      </button>
     </div>
   );
 };

@@ -39,12 +39,11 @@ const CreateNote = () => {
   const title = watch('title');
 
   const submit: SubmitHandler<INoteForm> = (data) => {
-    const note = {
+    const note: INoteForm = {
       title: data.title,
       text: data.text,
-      id: Date.now(),
       color,
-      createAt: String(new Date()),
+      createdAt: String(new Date()),
       tags,
     };
     dispatch(actions.addToNotes(note));
@@ -60,16 +59,14 @@ const CreateNote = () => {
           <div className={styles.createNoteWrapper}>
             <div className={styles.createNoteWrapper__note}>
               <div>
-                <div>
-                  <InputBlock
-                    error={errors?.title?.message}
-                    name='title'
-                    register={register}
-                    rules={{ required: { message: 'пропущен заголовок', value: true } }}
-                    type='text'
-                    placeholder='Заголовок заметки'
-                  />
-                </div>
+                <InputBlock
+                  error={errors?.title?.message}
+                  name='title'
+                  register={register}
+                  rules={{ required: { message: 'пропущен заголовок', value: true } }}
+                  type='text'
+                  placeholder='Заголовок заметки'
+                />
 
                 <ChangeColorComponent setColor={setColor} />
               </div>
@@ -83,7 +80,6 @@ const CreateNote = () => {
                 rules={{}}
                 setError={setError}
               />
-              {/* <TextAreaComponent /> */}
             </div>
 
             <TagsBlock tags={tags} setTags={setTags} />

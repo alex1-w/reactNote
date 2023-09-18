@@ -23,7 +23,7 @@ const EditPage: FC = () => {
   const { id } = useParams();
   const notes = useAppSelector((state) => state.notes);
 
-  const currenNote = notes.find((note) => Number(note.id) === Number(id));
+  const currenNote = notes.notes.find((note) => Number(note.id) === Number(id));
 
   console.log(currenNote);
 
@@ -47,7 +47,7 @@ const EditPage: FC = () => {
       title: data.title,
       text: data.text,
       color: data.color,
-      id: id,
+      id: Number(id),
       createdAt: data.createdAt,
       tags: data.tags,
     };

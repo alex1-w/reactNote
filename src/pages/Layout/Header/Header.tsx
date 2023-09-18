@@ -1,6 +1,6 @@
 import styles from './Header.module.scss';
 import { FC, useState, ChangeEvent, useEffect } from 'react';
-import { AppBar, Button } from '@mui/material';
+import { AppBar } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,25 +10,24 @@ import { INote } from '../../../types/Note.interface';
 import SearchDropdown from './SearchDropdown/SearchDropdown';
 
 const Header: FC = () => {
-  const notes = useAppSelector((state) => state.notes);
-  const [search, setSearch] = useState<string>('');
+  const notes = useAppSelector((state) => state.notes.notes);
+  const [searchValue, setSearch] = useState<string>('');
   const [searchNotes, setSearchNotes] = useState<INote[]>([]);
   const [dropdown, setDropdown] = useState<boolean>(false);
 
-  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value);
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>): void => setSearch(e.target.value);
 
-  const getNotes = () =>
-    setSearchNotes(notes.filter((n) => n.title.toLowerCase().indexOf(search) !== -1));
+  const getNotes = (): void => {
+    setSearchNotes(notes.filter((n) => n.title.toLowerCase().indexOf(searchValue) !== -1));
+  };
 
   useEffect(() => {
-    if (search.length > 1) {
+    if (searchValue.length > 1) {
       setDropdown(true);
       getNotes();
     }
-    if (search === '') setDropdown(false);
-  }, [search]);
-
-  console.log(searchNotes);
+    if (searchValue === '') setDropdown(false);
+  }, [searchValue]);
 
   return (
     <AppBar position='static'>
@@ -47,9 +46,9 @@ const Header: FC = () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder='Search…'
+              placeholder='Поиск по названию или тегу'
               inputProps={{ 'aria-label': 'search' }}
-              value={search}
+              value={searchValue}
               onChange={changeHandler}
             />
           </Search>
