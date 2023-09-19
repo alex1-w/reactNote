@@ -14,13 +14,13 @@ import { INoteForm } from '../../types/Note.interface';
 import TextAreaBlock from '../../components/UI/TextAreaBlock/TextAreaBlock';
 import { Form } from '../../components/Form/Form';
 import { ITag } from '../../types/ITag';
-import TagsBlock from '../CreateNote/TagsBlock/TagsBlock';
+import TagsBlock from '../../components/TagsBlock/TagsBlock';
 
 const EditPage: FC = () => {
   const navigation = useNavigate()
   const { id } = useParams();
   const [color, setColor] = useState<ColorType>('yellow');
-  const [editedTags, setEditedTags] = useState<ITag[]>([]);
+  const [newTags, setNewTags] = useState<ITag[]>([]);
 
   const notes = useAppSelector((state) => state.notes);
   const dispatch = useAppDispatch();
@@ -29,8 +29,6 @@ const EditPage: FC = () => {
     () => notes.notes.find((note) => Number(note.id) === Number(id)),
     [notes.notes, id],
   );
-
-  // console.log(currenNote);
 
   const {
     register,
@@ -55,7 +53,7 @@ const EditPage: FC = () => {
       id: Number(id),
       createdAt: data.createdAt,
       color: color,
-      tags: [...data.tags, ...editedTags],
+      tags: [...data.tags, ...newTags],
     };
     dispatch(actions.editNote(changedNote));
     navigation('/')
@@ -95,10 +93,9 @@ const EditPage: FC = () => {
             </div>
 
             <TagsBlock
-              type='editPage'
-              currentTags={currenNote!.tags}
-              setEditedTags={setEditedTags}
-              editedTags={editedTags}
+              tags={currenNote?.tags.concat(newTags)}
+              setNewTags={setNewTags}
+              newTags={newTags}
             />
           </div>
         </Form>

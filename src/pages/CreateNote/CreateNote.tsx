@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { INoteForm } from '../../types/Note.interface';
 import TextAreaBlock from '../../components/UI/TextAreaBlock/TextAreaBlock';
 import { Form } from '../../components/Form/Form';
-import TagsBlock from './TagsBlock/TagsBlock';
+import TagsBlock from '../../components/TagsBlock/TagsBlock';
 import { ITag } from '../../types/ITag';
 export type AddTagBlockVariant = 'createPage' | 'editPage';
 
@@ -84,7 +84,7 @@ const CreateNote = () => {
               />
             </div>
 
-            <TagsBlock type='createPage' />
+            <TagsBlock setTags={setTags} tags={tags} />
           </div>
         </Form>
       </div>
