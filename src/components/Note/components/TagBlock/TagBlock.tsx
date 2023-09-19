@@ -7,7 +7,7 @@ export const TagBlock: FC<{ tags: ITag[] }> = ({ tags }) => {
   return (
     <div className={styles.main}>
       <div>
-        {tags.map((tag) => (
+        {tags?.map((tag) => (
           <Tag name={tag.name} key={tag.name} />
         ))}
       </div>

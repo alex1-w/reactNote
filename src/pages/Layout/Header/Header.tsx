@@ -46,7 +46,7 @@ const Header: FC = () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder='Поиск по названию или тегу'
+              placeholder='Поиск по названию'
               inputProps={{ 'aria-label': 'search' }}
               value={searchValue}
               onChange={changeHandler}

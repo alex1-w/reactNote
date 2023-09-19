@@ -6,10 +6,8 @@
     padding: 1px;
     width: fit-content;
     max-width: 110px;
-    // overflow: hidden;
     padding: 2px 7px;
     gap: 3px;
-    border-radius: 5px;
     background-color: rgb(219, 236, 93);
     border: 1.6px solid rgba(0, 0, 0, 0.612);
     border-top-right-radius: 200px;
@@ -23,9 +21,11 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        color: black;
     }
 
     svg {
+        fill: black;
         height: 0.8em;
     }
 }

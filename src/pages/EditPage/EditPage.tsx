@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import styles from './EditPage.module.scss';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom'
 import ChangeColorComponent, {
   ColorType,
 } from '../../components/UI/ChangeColorComponent/ChangeColorComponent';
@@ -8,24 +9,28 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { InputBlock } from '../../components/UI/InputBlock/InputBlock';
 import { actions } from '../../store/notes/notes';
 import { useAppDispatch, useAppSelector } from '../../store/reduxActions';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { INoteForm } from '../../types/Note.interface';
 import TextAreaBlock from '../../components/UI/TextAreaBlock/TextAreaBlock';
 import { Form } from '../../components/Form/Form';
 import { ITag } from '../../types/ITag';
-import { useDispatch } from 'react-redux';
 import TagsBlock from '../CreateNote/TagsBlock/TagsBlock';
 
 const EditPage: FC = () => {
-  const dispatch = useDispatch();
-  const [color, setColor] = useState<ColorType>('yellow');
-  const [tags, setTags] = useState<ITag[]>([]);
+  const navigation = useNavigate()
   const { id } = useParams();
+  const [color, setColor] = useState<ColorType>('yellow');
+  const [editedTags, setEditedTags] = useState<ITag[]>([]);
+
   const notes = useAppSelector((state) => state.notes);
+  const dispatch = useAppDispatch();
 
-  const currenNote = notes.notes.find((note) => Number(note.id) === Number(id));
+  const currenNote = useMemo(
+    () => notes.notes.find((note) => Number(note.id) === Number(id)),
+    [notes.notes, id],
+  );
 
-  console.log(currenNote);
+  // console.log(currenNote);
 
   const {
     register,
@@ -39,6 +44,7 @@ const EditPage: FC = () => {
       title: currenNote?.title,
       text: currenNote?.text,
       color: currenNote?.color,
+      tags: currenNote?.tags,
     },
   });
 
@@ -46,12 +52,13 @@ const EditPage: FC = () => {
     const changedNote = {
       title: data.title,
       text: data.text,
-      color: data.color,
       id: Number(id),
       createdAt: data.createdAt,
-      tags: data.tags,
+      color: color,
+      tags: [...data.tags, ...editedTags],
     };
     dispatch(actions.editNote(changedNote));
+    navigation('/')
   };
 
   return (
@@ -87,7 +94,12 @@ const EditPage: FC = () => {
               />
             </div>
 
-            <TagsBlock tags={currenNote?.tags} setTags={setTags} />
+            <TagsBlock
+              type='editPage'
+              currentTags={currenNote!.tags}
+              setEditedTags={setEditedTags}
+              editedTags={editedTags}
+            />
           </div>
         </Form>
       </div>

@@ -17,19 +17,22 @@ export const notesSlice = createSlice({
       state.notes.push({ ...note, id: Date.now() });
     },
     editNote: (state, { payload: note }: PayloadAction<INote>) => {
+      // console.log(state.notes);
       state.notes = state.notes.map((noteItem) => {
-        if (noteItem.id === note.id) return note;
-        return noteItem;
+        if (noteItem.id === note.id) {
+          return note;
+        } else {
+          return noteItem;
+        }
       });
-      return { ...state, note };
+      console.log(state.notes);
+
+      // return state
     },
     deleteNote: (state, { payload: id }) => {
       state.notes = state.notes.filter((n) => n.id !== id);
     },
-    recoverFromTrash: (state, payload) => {
-
-      
-    }
+    recoverFromTrash: (state, payload) => { },
   },
 });
 

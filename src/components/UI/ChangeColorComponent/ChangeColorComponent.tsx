@@ -1,5 +1,5 @@
 import styles from './ChangeColorComponent.module.scss';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import Color from './Color/Color';
 
 export type ColorType = 'yellow' | 'green' | 'blue' | 'dark';

@@ -4,8 +4,13 @@
     // gap: 6px;
 
     button {
-        width: 40px;
-        height: 40px;
+        display: flex;
+
+        &:disabled {
+            svg {
+                fill: rgb(87, 87, 87);
+            }
+        }
     }
 }
 

@@ -1,15 +1,12 @@
 .main {
-    position: absolute;
-    top: 0;
-    left: 105%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100%;
     gap: 30px;
     border: 2px solid var(--light);
     border-radius: 5px;
     padding: 10px 4px 5px;
-    height: 100%;
 
     >div:first-child {
         display: flex;

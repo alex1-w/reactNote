@@ -13,6 +13,8 @@ import TextAreaBlock from '../../components/UI/TextAreaBlock/TextAreaBlock';
 import { Form } from '../../components/Form/Form';
 import TagsBlock from './TagsBlock/TagsBlock';
 import { ITag } from '../../types/ITag';
+export type AddTagBlockVariant = 'createPage' | 'editPage';
+
 
 const CreateNote = () => {
   const [color, setColor] = useState<ColorType>('yellow');
@@ -82,7 +84,7 @@ const CreateNote = () => {
               />
             </div>
 
-            <TagsBlock tags={tags} setTags={setTags} />
+            <TagsBlock type='createPage' />
           </div>
         </Form>
       </div>

@@ -2,21 +2,23 @@ import styles from './AddTagBlock.module.scss';
 import { hashTagIcon, plusIcon } from '../../icons/svgIcons';
 import { ITag } from '../../types/ITag';
 import { FC, useState, ChangeEvent } from 'react';
+import { AddTagBlockVariant } from '../../pages/CreateNote/CreateNote';
 
-interface AddTagBlock {
-  tags: ITag[] | undefined;
-  setTags: (tag: ITag[]) => void;
-  showNewTag: () => void;
+interface IAddTagBlock {
+  setEditedTags: (tags: ITag[]) => void;
+  editedTags?: ITag[];
+  currentTags?: ITag[];
+  type: AddTagBlockVariant
 }
 
-const AddTagBlock: FC<AddTagBlock> = ({ setTags, tags, showNewTag }) => {
+const AddTagBlock: FC<IAddTagBlock> = ({ setEditedTags, editedTags, currentTags, type }) => {
   const [value, setValue] = useState<string>('');
+  const accessAddingTag = type === 'editPage' && Boolean([...editedTags!, ...currentTags!].length < 5);
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value);
+
   const addInTags = (value: string) => {
-    if (tags && value.length === 0) return alert('тег не указан');
-    if (tags && tags.length > 4) return alert('не больше 4х тегов');
-    setTags([...tags!, { name: value }]);
+    editedTags && setEditedTags([...editedTags!, { name: value }]);
     setValue('');
   };
 
@@ -24,11 +26,16 @@ const AddTagBlock: FC<AddTagBlock> = ({ setTags, tags, showNewTag }) => {
     <div className={styles.main}>
       <div className={styles.tagWrapper}>
         {hashTagIcon}
-
-        <input type='text' maxLength={10} value={value} onChange={changeHandler} />
+        <input
+          type='text'
+          maxLength={10}
+          value={value}
+          onChange={changeHandler}
+          disabled={!accessAddingTag}
+        />
       </div>
 
-      <button onClick={() => addInTags(value)} type='button'>
+      <button disabled={type === 'editPage' ? !accessAddingTag : true} onClick={() => addInTags(value)} type='button'>
         {plusIcon}
       </button>
     </div>
