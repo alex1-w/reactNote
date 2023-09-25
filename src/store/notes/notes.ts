@@ -11,13 +11,9 @@ export const notesSlice = createSlice({
   initialState,
   reducers: {
     addToNotes: (state, { payload: note }: PayloadAction<INoteForm>) => {
-      if (state.notes.some((noteItem) => noteItem.title === note.title)) {
-        return alert(`заметка c заголовком " ${note.title} " уже есть`);
-      }
       state.notes.push({ ...note, id: Date.now() });
     },
     editNote: (state, { payload: note }: PayloadAction<INote>) => {
-      // console.log(state.notes);
       state.notes = state.notes.map((noteItem) => {
         if (noteItem.id === note.id) {
           return note;
